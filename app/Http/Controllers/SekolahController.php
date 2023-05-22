@@ -230,6 +230,14 @@ class SekolahController extends Controller
         return response()->json(['status' => TRUE]);
     }
 
+    public function isJson($string)
+    {
+        // return ((is_string($string) &&
+        //     (is_object(json_decode($string)) ||
+        //         is_array(json_decode($string))))) ? true : false;
+        return is_array(json_decode($string)) ? true : false;
+    }
+
     public function tarikDataKemdikbud(Request $request)
     {
         $getData = Http::get("https://dapo.kemdikbud.go.id/rekap/progresSP", [
@@ -244,8 +252,12 @@ class SekolahController extends Controller
         if (!file_exists($filePatch)) {
             mkdir($filePatch, 0777, true);
         }
-        file_put_contents($filePatch . "/DataSekolah_" . $request->kecamatan_id . ".json", $getData);
-        return response()->json(['status' => TRUE]);
+        if ($this->isJson($getData))
+            file_put_contents($filePatch . "/DataSekolah_" . $request->kecamatan_id . ".json", $getData);
+
+        if (file_exists($filePatch . "/DataSekolah_" . $request->kecamatan_id . ".json"))
+            $this->saveDataKemdikbud($request);
+        // return response()->json(['status' => TRUE]);
     }
 
     public function saveDataKemdikbud(Request $request)
@@ -271,11 +283,27 @@ class SekolahController extends Controller
                         if (!$sekolah) {
                             Sekolah::create($data);
                         }
+
+                        $user = User::where('email', $dt['npsn'] . "@situngkal.id")->first();
+                        if ($user) {
+                            $user->update([
+                                'name' => $dt['nama'],
+                                'user_type' => 'ops',
+                            ]);
+                        } else {
+                            User::create([
+                                'sekolah_id' => strtolower($dt['sekolah_id']),
+                                'name' => $dt['nama'],
+                                'email' => $dt['npsn'] . "@situngkal.id",
+                                'password' => bcrypt($dt['npsn']),
+                                'user_type' => 'ops',
+                            ]);
+                        }
                     }
                 }
-                return response()->json(['status' => TRUE]);
             }
         }
+        return response()->json(['status' => TRUE]);
     }
 
     public function destroy(string $id)
