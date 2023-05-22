@@ -234,7 +234,7 @@ class SekolahController extends Controller
     {
         $getData = Http::get("https://dapo.kemdikbud.go.id/rekap/progresSP", [
             'id_level_wilayah' => 3,
-            'kode_wilayah' => $request->kode_wilayah,
+            'kode_wilayah' => $request->kecamatan_id,
             'semester_id' => '20222',
             // 'bentuk_pendidikan_id' => 'sd'
         ]);
@@ -244,7 +244,7 @@ class SekolahController extends Controller
         if (!file_exists($filePatch)) {
             mkdir($filePatch, 0777, true);
         }
-        file_put_contents($filePatch . "/DataSekolah_" . $request->$kode_wilayah . ".json", $getData);
+        file_put_contents($filePatch . "/DataSekolah_" . $request->$kecamatan_id . ".json", $getData);
     }
 
     public function saveDataKemdikbud(Request $request)
