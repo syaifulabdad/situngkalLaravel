@@ -48,9 +48,9 @@
                 </div>
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title form-inline">
-                        <a href="javascript:void(0)" class="btn btn-warning #btn-sm mr-1 proses" onclick="getLaporan('sptjm')" data-dataPrint="sptjm" data-submit="modal"><i class="fa fa-file-pdf"></i> SPTJM</a>
+                        {{-- <a href="javascript:void(0)" class="btn btn-warning #btn-sm mr-1 proses" onclick="getLaporan('sptjm')" data-dataPrint="sptjm" data-submit="modal"><i class="fa fa-file-pdf"></i> SPTJM</a> --}}
                         <a href="javascript:void(0)" class="btn btn-danger #btn-sm mr-1 proses" onclick="getLaporan('pdf')" data-dataPrint="pdf" data-submit="modal"><i class="fa fa-file-pdf"></i> LAPORAN PDF</a>
-                        <a href="javascript:void(0)" class="btn btn-success #btn-sm mr-1 proses" onclick="getLaporan('excel')" data-dataPrint="excel" data-submit="modal"><i class="fa fa-file-excel"></i> LAPORAN EXCEL</a>
+                        {{-- <a href="javascript:void(0)" class="btn btn-success #btn-sm mr-1 proses" onclick="getLaporan('excel')" data-dataPrint="excel" data-submit="modal"><i class="fa fa-file-excel"></i> LAPORAN EXCEL</a> --}}
                     </div>
                 </div>
                 <div class="card-body">
