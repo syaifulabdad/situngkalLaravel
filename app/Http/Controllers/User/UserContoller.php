@@ -54,6 +54,7 @@ class UserContoller extends Controller
                 'type' => 'select',
                 // 'options' => $this->selectFormSekolah(),
                 'options' => (new Sekolah())->selectFormInput(),
+                'validation' => 'required',
             ];
         } else {
             $this->formData['name'] = [
