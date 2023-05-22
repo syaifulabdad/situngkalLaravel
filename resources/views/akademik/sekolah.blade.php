@@ -49,7 +49,7 @@
                                 @endforeach
                             </div>
                         @endisset
-                        <a href="javascript:void(0)" class="btn btn-primary ml-2 btnTarikKemdikbud"><i class="fa fa-plus"></i> Tarik Data Kemdikbud</a>
+                        {{-- <a href="javascript:void(0)" class="btn btn-primary ml-2 btnTarikKemdikbud"><i class="fa fa-plus"></i> Tarik Data Kemdikbud</a> --}}
                     </div>
                 </div>
                 <div class="card-body">
