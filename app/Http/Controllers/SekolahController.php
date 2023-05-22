@@ -232,6 +232,23 @@ class SekolahController extends Controller
 
     public function tarikDataKemdikbud(Request $request)
     {
+        $getData = Http::get("https://dapo.kemdikbud.go.id/rekap/progresSP", [
+            'id_level_wilayah' => 3,
+            'kode_wilayah' => $request->kode_wilayah,
+            'semester_id' => '20222',
+            // 'bentuk_pendidikan_id' => 'sd'
+        ]);
+        // $getData = file_get_contents("https://dapo.kemdikbud.go.id/rekap/progresSP?id_level_wilayah=3&kode_wilayah=".$request->kode_wilayah."&semester_id=20222");
+
+        $filePatch = __DIR__ . "/DataKemdikbud";
+        if (!file_exists($filePatch)) {
+            mkdir($filePatch, 0777, true);
+        }
+        file_put_contents($filePatch . "/DataSekolah_" . $request->$kode_wilayah . ".json", $getData);
+    }
+
+    public function saveDataKemdikbud(Request $request)
+    {
         // $response = file_get_contents("https://dapo.kemdikbud.go.id/rekap/progresSP?id_level_wilayah=3&kode_wilayah=100403&semester_id=20222");
 
         $response = Http::get("https://dapo.kemdikbud.go.id/rekap/progresSP", [
