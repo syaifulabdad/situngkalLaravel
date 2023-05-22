@@ -245,40 +245,36 @@ class SekolahController extends Controller
             mkdir($filePatch, 0777, true);
         }
         file_put_contents($filePatch . "/DataSekolah_" . $request->kecamatan_id . ".json", $getData);
+        return response()->json(['status' => TRUE]);
     }
 
     public function saveDataKemdikbud(Request $request)
     {
-        // $response = file_get_contents("https://dapo.kemdikbud.go.id/rekap/progresSP?id_level_wilayah=3&kode_wilayah=100403&semester_id=20222");
+        $filePatch = __DIR__ . "/DataKemdikbud/DataSekolah_" . $request->kecamatan_id . ".json";
+        if (file_exists($filePatch)) {
+            $getData = file_get_contents($filePatch);
 
-        $response = Http::get("https://dapo.kemdikbud.go.id/rekap/progresSP", [
-            'id_level_wilayah' => 3,
-            // 'kode_wilayah' => '100403',
-            'kode_wilayah' => $request->kode_wilayah,
-            'semester_id' => '20222',
-            // 'bentuk_pendidikan_id' => 'sd'
-        ]);
+            if (isset($getData) && $getData) {
+                foreach (json_decode($getData, TRUE) as $dt) {
+                    if (in_array($dt['bentuk_pendidikan'], ['PAUD', 'TK', 'SD', 'SMP'])) {
+                        $data = array();
 
-        if (isset($response) && $response) {
-            foreach (json_decode($response, TRUE) as $dt) {
-                if (in_array($dt['bentuk_pendidikan'], ['PAUD', 'TK', 'SD', 'SMP', 'SMA', 'SMK'])) {
-                    $data = array();
+                        $data['sekolah_id'] = strtolower($dt['sekolah_id']);
+                        $data['nama'] = $dt['nama'];
+                        $data['npsn'] = $dt['npsn'];
+                        $data['jenjang'] = strtoupper($dt['bentuk_pendidikan']);
+                        $data['status_sekolah'] = $dt['status_sekolah'];
+                        $data['kecamatan_id'] = trim($dt['kode_wilayah_induk_kecamatan']);
+                        $data['provinsi_id'] = trim($dt['kode_wilayah_induk_provinsi']);
 
-                    $data['sekolah_id'] = strtolower($dt['sekolah_id']);
-                    $data['nama'] = $dt['nama'];
-                    $data['npsn'] = $dt['npsn'];
-                    $data['jenjang'] = strtoupper($dt['bentuk_pendidikan']);
-                    $data['status_sekolah'] = $dt['status_sekolah'];
-                    $data['kecamatan_id'] = trim($dt['kode_wilayah_induk_kecamatan']);
-                    $data['provinsi_id'] = trim($dt['kode_wilayah_induk_provinsi']);
-
-                    $sekolah = Model::where('npsn', $dt['npsn'])->first();
-                    if (!$sekolah) {
-                        Sekolah::create($data);
+                        $sekolah = Model::where('npsn', $dt['npsn'])->first();
+                        if (!$sekolah) {
+                            Sekolah::create($data);
+                        }
                     }
                 }
+                return response()->json(['status' => TRUE]);
             }
-            return response()->json(['status' => TRUE]);
         }
     }
 
