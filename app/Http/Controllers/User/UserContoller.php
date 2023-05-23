@@ -62,8 +62,10 @@ class UserContoller extends Controller
                 'type' => 'text',
                 'validation' => 'required',
             ];
-            if (request()->segment(1) == 'admin') {
+
+            if (in_array(request()->segment(1), ['admin', 'user-op'])) {
                 $this->formData['email'] = [
+                    'label' => "Username",
                     'type' => 'email',
                     'validation' => 'required',
                 ];
