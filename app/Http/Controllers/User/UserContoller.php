@@ -45,9 +45,12 @@ class UserContoller extends Controller
         if (request()->segment(1) == 'user-op') {
             $this->dataTable['kecamatan_id'] = [];
         }
+        $this->dataTable['last_login'] = [
+            'orderable' => true,
+        ];
 
 
-        $this->dataTableOrder = ['name asc'];
+        $this->dataTableOrder = ['kecamatan_id asc', 'sekolah_id asc', 'name asc'];
 
         // data crud
         if (request()->segment(1) == 'user-ops') {
