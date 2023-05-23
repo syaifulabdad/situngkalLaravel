@@ -102,6 +102,7 @@ class SekolahController extends Controller
     public function index(Request $request)
     {
         $this->dataTableFilter = [
+            'jenjang' => ['PAUD' => 'PAUD', 'TK' => 'TK', 'SD' => 'SD', 'SMP' => 'SMP'],
             'kecamatan_id' => (new Wilayah)->selectWilayah(3, ['mst_kode_wilayah' => '100400']),
         ];
 
