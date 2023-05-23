@@ -43,7 +43,7 @@ class TppPerbulanController extends Controller
             ],
             'golongan' => [
                 'type' => 'select',
-                'options' => ['II' => "II", 'III' => "III", 'IV' => "IV"],
+                'options' => [null => "Non PNS", 'II' => "II", 'III' => "III", 'IV' => "IV"],
             ],
             'tpp_perbulan' => [
                 'type' => 'number',
