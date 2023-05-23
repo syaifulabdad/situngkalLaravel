@@ -29,8 +29,8 @@ class TppPerbulanController extends Controller
                 'orderable' => true,
                 'searchable' => true,
             ],
-            'golongan' => ['className' => 'text-center'],
-            'tpp_perbulan' => ['className' => 'text-center'],
+            'golongan' => ['className' => 'text-center', 'width' => '200px'],
+            'tpp_perbulan' => ['className' => 'text-right', 'width' => '250px'],
         ];
         $this->dataTableOrder = ['jenis_tpp asc', 'golongan asc', 'tpp_perbulan asc'];
 
