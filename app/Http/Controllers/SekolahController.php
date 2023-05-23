@@ -209,7 +209,7 @@ class SekolahController extends Controller
             if (session('admin')) {
                 $sekolah = Model::create($data);
 
-                $User = User::where('email',  $sekolah->npsn . "@situngkal.id")->first();
+                $User = User::where(['user_type' => 'ops', 'sekolah_id' => $sekolah->sekolah_id])->first();
                 if ($User) {
                     $User->update([
                         'sekolah_id' => $sekolah->sekolah_id,
