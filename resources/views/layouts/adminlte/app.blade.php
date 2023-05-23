@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ isset($title) && $title ? "$title - " : '' }} SIM-TUN</title>
+    <title>{{ isset($title) && $title ? "$title - " : '' }} SIM TUNJANGAN</title>
     <!-- Favicons -->
     <link href="{{ asset('media/img/logo-tanjabar.png') }}" rel="icon">
     <link href="{{ asset('media/img/logo-tanjabar.png') }}" rel="apple-touch-icon">
@@ -70,7 +70,7 @@
             <!-- Brand Logo -->
             <a href="/dashboard" class="brand-link #text-center text-dark">
                 <img src="{{ asset('media/img/logo-tanjabar.jpg') }}" alt="SIM-TUN Logo" class="brand-image #img-circle #elevation-3" style="#opacity: .8">
-                <span class="brand-text font-weight-dark h4">SIM-TUN</span>
+                <span class="brand-text font-weight-dark h4">SIM TUNJANGAN</span>
             </a>
 
             <!-- Sidebar -->
