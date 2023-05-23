@@ -49,6 +49,10 @@ class Login extends Controller
                 'akses_kecamatan_id' =>  $user->kecamatan_id ?? null,
             ]);
 
+            $user->update([
+                'last_login' => date('Y-m-d H:i:s'),
+            ]);
+
             return redirect()->intended('/');
         }
 
