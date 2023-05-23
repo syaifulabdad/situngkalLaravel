@@ -38,6 +38,7 @@ class UserContoller extends Controller
             'searchable' => true,
         ];
         $this->dataTable['email'] = [
+            'label' => (in_array(request()->segment(1), ['admin', 'user-op']) ? 'Username' : 'Email'),
             'orderable' => true,
             'searchable' => true,
         ];
