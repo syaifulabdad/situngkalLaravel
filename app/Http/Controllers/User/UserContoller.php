@@ -162,7 +162,8 @@ class UserContoller extends Controller
                 //     $btn .= "<a href='javascript:void(0)' class='btn btn-warning btn-sm btnKecamatan' data-id='" . $row->{$this->primaryKey} . "'><i class='fa fa-list'></i> Kecamatan</a> ";
                 // }
                 $btn .= "<a href='javascript:void(0)' class='btn btn-primary btn-sm btnEdit' data-id='" . $row->{$this->primaryKey} . "'><i class='fa fa-edit'></i> Edit</a> ";
-                $btn .= "<a href='javascript:void(0)' class='btn btn-danger btn-sm btnDelete' data-id='" . $row->{$this->primaryKey} . "'><i class='fa fa-trash'></i></a>";
+                if (!in_array($row->email, ['admin', 'administrator']))
+                    $btn .= "<a href='javascript:void(0)' class='btn btn-danger btn-sm btnDelete' data-id='" . $row->{$this->primaryKey} . "'><i class='fa fa-trash'></i></a>";
                 return $btn;
             });
             $datatables->rawColumns(['action']);
