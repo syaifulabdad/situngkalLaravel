@@ -60,6 +60,9 @@ class TppPerbulanController extends Controller
             $datatables->editColumn('jenis_tpp', function ($row) {
                 return $row->jenisTpp->jenis_tpp ?? null;
             });
+            $datatables->editColumn('tpp_perbulan', function ($row) {
+                return $row->tpp_perbulan ? number_format($row->tpp_perbulan, 0, ',', '.') : null;
+            });
             $datatables->addColumn('action', function ($row) {
                 $btn = null;
                 $btn .= "<a href='javascript:void(0)' class='btn btn-sm btn-primary mr-2 btnEdit' data-id='" . $row->{$this->primaryKey} . "'><i class='fa fa-edit'></i> Edit</a> ";
