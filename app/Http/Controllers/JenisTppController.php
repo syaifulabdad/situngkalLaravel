@@ -119,7 +119,7 @@ class JenisTppController extends Controller
         foreach ($this->formData as $key => $value) {
             if ($key == 'jenis_ptk_id') {
                 if ($request->jenis_ptk_id) {
-                    $data['jenis_ptk_id'] = ($request->jenis_ptk_id);
+                    $data['jenis_ptk_id'] = $request->jenis_ptk_id;
                 }
             } else {
                 $data[$key] = $request->{$key};
