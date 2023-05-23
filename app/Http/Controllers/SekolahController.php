@@ -285,11 +285,10 @@ class SekolahController extends Controller
                             Sekolah::create($data);
                         }
 
-                        $user = User::where('email', $dt['npsn'] . "@situngkal.id")->first();
+                        $user = User::where(['user_type' => 'ops', 'sekolah_id' => $dt['sekolah_id']])->first();
                         if ($user) {
                             $user->update([
                                 'name' => $dt['nama'],
-                                'user_type' => 'ops',
                             ]);
                         } else {
                             User::create([
