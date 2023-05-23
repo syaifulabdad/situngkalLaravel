@@ -62,10 +62,17 @@ class UserContoller extends Controller
                 'type' => 'text',
                 'validation' => 'required',
             ];
-            $this->formData['email'] = [
-                'type' => 'email',
-                'validation' => 'required|email',
-            ];
+            if (request()->segment(1) == 'admin') {
+                $this->formData['email'] = [
+                    'type' => 'email',
+                    'validation' => 'required',
+                ];
+            } else {
+                $this->formData['email'] = [
+                    'type' => 'email',
+                    'validation' => 'required|email',
+                ];
+            }
         }
 
         $this->formData['password'] = [
