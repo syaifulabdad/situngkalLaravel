@@ -70,7 +70,7 @@
             <!-- Brand Logo -->
             <a href="/dashboard" class="brand-link #text-center text-dark">
                 <img src="{{ asset('media/img/logo-tanjabar.jpg') }}" alt="SIM-TUN Logo" class="brand-image #img-circle #elevation-3" style="#opacity: .8">
-                <span class="brand-text font-weight-dark h4">SIM TUNJANGAN</span>
+                <span class="brand-text font-weight-dark h4">SIM-TUN</span>
             </a>
 
             <!-- Sidebar -->
