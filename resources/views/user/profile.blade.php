@@ -22,7 +22,7 @@
                     <p class="text-muted text-center">{{ session('user_type') }}</p>
 
 
-                    <a href="#" class="btn btn-primary btn-block"><b>Update Foto</b></a>
+                    {{-- <a href="#" class="btn btn-primary btn-block"><b>Update Foto</b></a> --}}
                 </div>
             </div>
         </div>
