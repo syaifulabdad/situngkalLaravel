@@ -54,7 +54,7 @@ class SekolahController extends Controller
             'desa_kelurahan' => ['label' => 'Desa/Kelurahan'],
             'kecamatan_id' => [],
         ];
-        $this->dataTableOrder = ['nama asc'];
+        $this->dataTableOrder = ['kecamatan_id asc', 'jenjang asc', 'status_sekolah asc', 'nama asc'];
 
         // form data
         $this->formData = [
