@@ -45,14 +45,14 @@ class SekolahController extends Controller
                 'searchable' => true,
             ],
             'jenjang' => [
-                'className' => 'text-center'
+                'className' => 'text-center', 'orderable' => true,
             ],
             'status_sekolah' => [
-                'label' => 'Status',
+                'label' => 'Status', 'orderable' => true,
             ],
             'alamat_jalan' => [],
             'desa_kelurahan' => ['label' => 'Desa/Kelurahan'],
-            'kecamatan_id' => [],
+            'kecamatan_id' => ['orderable' => true],
         ];
         $this->dataTableOrder = ['kecamatan_id asc', 'jenjang asc', 'status_sekolah asc', 'nama asc'];
 
