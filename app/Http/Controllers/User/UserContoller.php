@@ -141,14 +141,14 @@ class UserContoller extends Controller
             }
 
 
-            $datatables = DataTables::of($builder->get());
+            $datatables = DataTables::of($builder);
             $datatables->smart(true)->addIndexColumn();
-            $datatables->editColumn('sekolah_id', function ($row) {
+            $datatables->addColumn('sekolah_id', function ($row) {
                 $sek = Sekolah::find($row->sekolah_id);
                 return $sek->nama ?? null;
             });
 
-            $datatables->editColumn('kecamatan_id', function ($row) {
+            $datatables->addColumn('kecamatan_id', function ($row) {
                 $dt = [];
                 if ($row->kecamatan_id) {
                     foreach (json_decode($row->kecamatan_id) as $key => $value) {

@@ -234,28 +234,28 @@ class PtkController extends Controller
                 }
             }
 
-            $datatables = DataTables::of($builder->get())->smart(true)->addIndexColumn();
-            $datatables->editColumn('agama', function ($row) {
+            $datatables = DataTables::of($builder)->smart(true)->addIndexColumn();
+            $datatables->addColumn('agama', function ($row) {
                 return $row->agama->agama ?? null;
             });
-            $datatables->editColumn('golongan', function ($row) {
+            $datatables->addColumn('golongan', function ($row) {
                 return $row->riwayatKepangkatan->sub_golongan ?? null;
             });
-            $datatables->editColumn('jenis_tpp', function ($row) {
+            $datatables->addColumn('jenis_tpp', function ($row) {
                 return $row->jenisTpp->jenis_tpp ?? null;
             });
-            $datatables->editColumn('jenis_ptk_id', function ($row) {
+            $datatables->addColumn('jenis_ptk_id', function ($row) {
                 $ref = JenisPtk::find($row->jenis_ptk_id);
                 return $ref ? $ref->jenis_ptk : null;
             });
-            $datatables->editColumn('status_kepegawaian_id', function ($row) {
+            $datatables->addColumn('status_kepegawaian_id', function ($row) {
                 $ref = StatusKepegawaian::find($row->status_kepegawaian_id);
                 return $ref ? $ref->status_kepegawaian : null;
             });
-            $datatables->editColumn('sertifikasi', function ($row) {
+            $datatables->addColumn('sertifikasi', function ($row) {
                 return $row->sertifikasi ? "Serti" : null;
             });
-            $datatables->editColumn('jenis_keluar_id', function ($row) {
+            $datatables->addColumn('jenis_keluar_id', function ($row) {
                 $ref = JenisKeluar::find($row->jenis_keluar_id);
                 return $ref ? $ref->jenis_keluar : null;
             });

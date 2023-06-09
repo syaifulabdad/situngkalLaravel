@@ -94,7 +94,7 @@ class RekapTppController extends Controller
                 }
             }
 
-            $datatables = DataTables::of($builder->get())->smart(true)->addIndexColumn();
+            $datatables = DataTables::of($builder)->smart(true)->addIndexColumn();
             $datatables->editColumn('nama', function ($row) {
                 return $row->nama . "<br><small> $row->nip</small>";
             });

@@ -134,8 +134,8 @@ class SekolahController extends Controller
                 }
             }
 
-            $datatables = DataTables::of($builder->get())->smart(true)->addIndexColumn();
-            $datatables->editColumn('kecamatan_id', function ($row) {
+            $datatables = DataTables::of($builder)->smart(true)->addIndexColumn();
+            $datatables->addColumn('kecamatan_id', function ($row) {
                 $wil = Wilayah::find($row->kecamatan_id);
                 return $wil->nama ?? null;
             });

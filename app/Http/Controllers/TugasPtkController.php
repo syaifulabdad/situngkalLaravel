@@ -69,8 +69,8 @@ class TugasPtkController extends Controller
                 ->with('jabatanTugas');
             if (session('sekolah_id'))
                 $builder->where('reg.sekolah_id', session('sekolah_id'));
-            $datatables = DataTables::of($builder->get())->smart(true)->addIndexColumn();
-            $datatables->editColumn('jabatan_id', function ($row) {
+            $datatables = DataTables::of($builder)->smart(true)->addIndexColumn();
+            $datatables->addColumn('jabatan_id', function ($row) {
                 return $row->jabatanTugas->jabatan_tugas_ptk ?? null;
             });
 

@@ -55,12 +55,12 @@ class TppPerbulanController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $builder = Model::with('jenisTpp')->get();
+            $builder = Model::with('jenisTpp');
             $datatables = DataTables::of($builder)->smart(true)->addIndexColumn();
-            $datatables->editColumn('jenis_tpp', function ($row) {
+            $datatables->addColumn('jenis_tpp', function ($row) {
                 return $row->jenisTpp->jenis_tpp ?? null;
             });
-            $datatables->editColumn('tpp_perbulan', function ($row) {
+            $datatables->addColumn('tpp_perbulan', function ($row) {
                 return $row->tpp_perbulan ? number_format($row->tpp_perbulan, 0, ',', '.') : null;
             });
             $datatables->addColumn('action', function ($row) {

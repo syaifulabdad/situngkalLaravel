@@ -53,7 +53,7 @@ class JenisTppController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $builder = Model::all();
+            $builder = Model::query();
             $datatables = DataTables::of($builder)->smart(true)->addIndexColumn();
             $datatables->editColumn('jenis_ptk_id', function ($row) {
                 $dt = [];
