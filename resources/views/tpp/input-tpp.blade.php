@@ -173,7 +173,7 @@
                 success: function(data) {
                     if (data.status) {
                         $('#form-data').trigger("reset");
-                        table.draw();
+                        reload();
                         alert('Data berhasil disimpan');
                     } else {
                         for (var i = 0; i < data.error_string.length; i++) {

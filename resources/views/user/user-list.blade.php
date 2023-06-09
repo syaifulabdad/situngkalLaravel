@@ -311,7 +311,7 @@
                     if (data.status) {
                         $('#form-data').trigger("reset");
                         $('.modal').modal('hide');
-                        table.draw();
+                        reload();
                     } else {
                         for (var i = 0; i < data.error_string.length; i++) {
                             if (data.error_string[i]) {
