@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 class Wilayah extends Model
 {
     use HasFactory;
-    protected $table = 'referensi.wilayah';
+    protected $table = 'ref_wilayah';
     protected $primaryKey = 'kode_wilayah';
 
     public function selectWilayah($level = 1, $where = [], $parent_id = null)

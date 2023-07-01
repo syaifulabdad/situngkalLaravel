@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Penghasilan extends Model
 {
     use HasFactory;
-    protected $table = 'referensi.penghasilan';
+    protected $table = 'ref_penghasilan';
     protected $guarded = [];
 
     public function selectFormInput()

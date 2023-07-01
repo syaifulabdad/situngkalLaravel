@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AlatTransportasi extends Model
 {
     use HasFactory;
-    protected $table = 'referensi.alat_transportasi';
+    protected $table = 'ref_alat_transportasi';
     protected $guarded = [];
 
     public function selectFormInput()

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PangkatGolongan extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
-    protected $table = 'referensi.pangkat_golongan';
+    protected $table = 'ref_pangkat_golongan';
     protected $primaryKey = 'id';
 
     public function selectFormInput()

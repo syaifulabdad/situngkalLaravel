@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class JenisPtk extends Model
 {
     use HasFactory;
-    protected $table = 'referensi.jenis_ptk';
+    protected $table = 'ref_jenis_ptk';
     protected $guarded = [];
 
     public function selectFormInput($where = null)

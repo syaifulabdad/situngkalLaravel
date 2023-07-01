@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class StatusKepegawaian extends Model
 {
     use HasFactory;
-    protected $table = 'referensi.status_kepegawaian';
+    protected $table = 'ref_status_kepegawaian';
     protected $guarded = [];
 
     public function selectFormInput()

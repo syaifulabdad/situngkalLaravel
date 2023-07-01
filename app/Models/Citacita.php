@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Citacita extends Model
 {
     use HasFactory;
-    protected $table = 'referensi.cita_cita';
+    protected $table = 'ref_cita_cita';
     protected $guarded = [];
 
     public function selectFormInput()
